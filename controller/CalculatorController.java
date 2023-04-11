@@ -54,7 +54,7 @@ public class CalculatorController {
     public void delOnAction(ActionEvent actionEvent) {
         String[] strArr = typeDisplay.getText().split(" ");
 
-        if (strArr.length == 3) {
+        if (strArr.length == 3 || strArr.length == 1) {
             char[] charArr = num1.toCharArray();
             num1 = "";
             for (int i=0;i<charArr.length-1;i++) {
@@ -67,10 +67,9 @@ public class CalculatorController {
             typeDisplay.setText(typeDisplay.getText() + num1);
 
         } else if (strArr.length == 2) {
-
+            operator = "";
+            typeDisplay.setText(strArr[0]);
         }
-
-
     }
 
     public void addOnAction(ActionEvent actionEvent) {
@@ -112,7 +111,7 @@ public class CalculatorController {
 
     public void divOnAction(ActionEvent actionEvent) {
         if (num1.equals("0")) {
-            System.out.printf("Math Error");
+            ansDisplay.setText("Math Error");
 
         } else {
             if (num2.equals("")) {
